@@ -89,7 +89,7 @@ public class Basic1 {
         System.out.println(i3);
     }
 
-    public static <E> void print(E element){
+    public static <E> void print  (E element){
         System.out.println(element);
     }
 }

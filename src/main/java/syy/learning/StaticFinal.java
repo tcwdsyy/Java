@@ -6,6 +6,9 @@ public class StaticFinal {
         m.method();
 
         System.out.println(MyClas.getSField());
+
+        OuterClass.InnerClass in = new OuterClass.InnerClass(); //静态内部类可以使用 static 关键字定义，静态内部类我们不需要创建外部类来访问，可以直接访问它：
+        System.out.println(in.y);
     }
 }
 
@@ -37,4 +40,12 @@ class MyClas{
 //    静态常量：显示初始化、静态代码块
 //    基本数据类型常量：值不可变
 //    引用数据类型常量：地址不可变
+}
+
+class OuterClass {
+    int x = 10;
+
+    static class InnerClass {
+        int y = 5;
+    }
 }
