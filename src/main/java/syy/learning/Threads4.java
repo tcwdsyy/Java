@@ -30,8 +30,8 @@ public class Threads4 {
 
 
         Future<String> f = es.submit( () -> "hello2"); // a lambda callable function that returns a String type message "hello2"
-        String value1 = f.get();
-        System.out.println(value1);
+//        String value1 = f.get();
+//        System.out.println(value1);
         es.shutdown();
 
     }
