@@ -1,6 +1,6 @@
 package syy.learning;
 
-public class Threads2 {
+public class ThreadsSynchronized {
     public static void main(String[] args) {
         Shop shop = new Shop();// 共享资源对象
 

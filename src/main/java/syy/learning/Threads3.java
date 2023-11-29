@@ -16,10 +16,11 @@ public class Threads3 {
         ReadTask readTask = new ReadTask(student);//读线程任务
         //执行的两个赋值的线程任务
         Long start = System.currentTimeMillis();//开始时间（毫秒值）
-        executorService.submit(writeTask);
-        executorService.submit(writeTask);
 
-        for (int i = 1; i <= 18; i++) {
+        executorService.submit(writeTask);
+        executorService.submit(() -> student.setAge(100));
+
+        for (int i = 1; i <= 5; i++) {
             executorService.submit(readTask);
         }
 
@@ -46,6 +47,7 @@ class StudentT {
     ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
     ReentrantReadWriteLock.WriteLock readLock = reentrantReadWriteLock.writeLock();//读锁
     ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();//写锁
+
     //赋值——写操作
     public void setAge(int age) {
         writeLock.lock();
