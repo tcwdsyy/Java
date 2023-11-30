@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 
 public class ThreadsSynchronized {
     public static void main(String[] args) {

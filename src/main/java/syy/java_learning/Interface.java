@@ -1,6 +1,4 @@
-package syy.learning;
-
-import java.util.Arrays;
+package syy.java_learning;
 
 public class Interface {
     public static void main(String[] args) {

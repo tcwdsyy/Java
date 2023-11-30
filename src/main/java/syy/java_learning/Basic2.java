@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 // some basic array implementation and modification
 public class Basic2 {
     public static void main(String[] args){

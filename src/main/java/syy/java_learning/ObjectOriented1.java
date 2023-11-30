@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 // This file has covered features of class and inheritor in java such as creating constructor, overload constructor,
 // overload method, access modifiers, super constructor, override method, class casting
 

@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 
 public class Lambdas {
     public static void main(String[] args) {
@@ -12,5 +12,8 @@ public class Lambdas {
 
         t1.start();
         t2.start();
+
+
+
     }
 }

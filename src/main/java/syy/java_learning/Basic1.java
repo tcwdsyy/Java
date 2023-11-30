@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 
 import java.util.Scanner; //1.引入包
 public class Basic1 {

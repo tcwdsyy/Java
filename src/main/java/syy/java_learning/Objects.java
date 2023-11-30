@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 
 import java.math.BigDecimal;
 

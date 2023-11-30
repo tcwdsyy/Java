@@ -1,4 +1,4 @@
-package syy.learning;
+package syy.java_learning;
 
 public class Abstract {
     // Animal a = new Animal();
