@@ -174,15 +174,17 @@ public class AccountSystem {
     }
 
     //转账
-    public void transfers() {
+    public void transfers(){
         System.out.print("请输入付款卡号：");
         String card_id = scanner.next();
         System.out.print("请输入付款密码：");
         String password = scanner.next();
         System.out.print("请输入转账金额：");
         double money = scanner.nextDouble();
-        String sql1 = "SELECT balance FROM t_account WHERE card_id = ? AND password = ?";
         try {
+            DBUtil.begin();
+
+            String sql1 = "SELECT balance FROM t_account WHERE card_id = ? AND password = ?";
             preparedStatement = connection.prepareStatement(sql1);
             preparedStatement.setObject(1,card_id);
             preparedStatement.setObject(2,password);
@@ -202,13 +204,13 @@ public class AccountSystem {
                         preparedStatement.setObject(1, money);
                         preparedStatement.setObject(2, card_id);
                         preparedStatement.executeUpdate();
-                        String sql4 = "UPDATE t_account SET balance = balance + ? WHERE card_id = ?";
+                        String sql4 = "UPDATE t_account SET balance = balance + ? WHERE card_id = ? " ;
                         preparedStatement = connection.prepareStatement(sql4);
                         preparedStatement.setDouble(1, money);
                         preparedStatement.setString(2, toCard_id);
                         preparedStatement.executeUpdate();
+                        //throw new SQLException();
                         System.out.println("转账成功！");
-
                     } else{
                         System.out.println("收款卡号不存在！");
                     }
@@ -218,9 +220,12 @@ public class AccountSystem {
             } else {
                 System.out.println("卡号或密码错误！");
             }
-        } catch (SQLException e){
-            e.printStackTrace();
-        } finally {
+
+            DBUtil.commit();
+        } catch (SQLException e) {
+            System.out.println("转账异常！");
+            DBUtil.rollback();
+        } finally{
             try {
                 if (resultSet != null) {
                     resultSet.close();
@@ -233,4 +238,63 @@ public class AccountSystem {
             }
         }
     }
+//    public void transfers() {
+//        System.out.print("请输入付款卡号：");
+//        String card_id = scanner.next();
+//        System.out.print("请输入付款密码：");
+//        String password = scanner.next();
+//        System.out.print("请输入转账金额：");
+//        double money = scanner.nextDouble();
+//        String sql1 = "SELECT balance FROM t_account WHERE card_id = ? AND password = ?";
+//        try {
+//            preparedStatement = connection.prepareStatement(sql1);
+//            preparedStatement.setObject(1,card_id);
+//            preparedStatement.setObject(2,password);
+//            resultSet = preparedStatement.executeQuery();
+//            if(resultSet.next()){
+//                double balance = resultSet.getDouble(1);
+//                if(balance>=money) {
+//                    System.out.print("请输入收款卡号：");
+//                    String toCard_id = scanner.next();
+//                    String sql2 = "SELECT balance FROM t_account WHERE card_id = ?";
+//                    preparedStatement = connection.prepareStatement(sql2);
+//                    preparedStatement.setObject(1,toCard_id);
+//                    resultSet = preparedStatement.executeQuery();
+//                    if(resultSet.next()){
+//                        String sql3 = "UPDATE t_account SET balance = balance - ? WHERE card_id = ?";
+//                        preparedStatement = connection.prepareStatement(sql3);
+//                        preparedStatement.setObject(1, money);
+//                        preparedStatement.setObject(2, card_id);
+//                        preparedStatement.executeUpdate();
+//                        String sql4 = "UPDATE t_account SET balance = balance + ? WHERE card_id = ?";
+//                        preparedStatement = connection.prepareStatement(sql4);
+//                        preparedStatement.setDouble(1, money);
+//                        preparedStatement.setString(2, toCard_id);
+//                        preparedStatement.executeUpdate();
+//                        System.out.println("转账成功！");
+//
+//                    } else{
+//                        System.out.println("收款卡号不存在！");
+//                    }
+//                } else {
+//                    System.out.println("卡内余额不足！");
+//                }
+//            } else {
+//                System.out.println("卡号或密码错误！");
+//            }
+//        } catch (SQLException e){
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (resultSet != null) {
+//                    resultSet.close();
+//                }
+//                if (preparedStatement != null) {
+//                    preparedStatement.close();
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

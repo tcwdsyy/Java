@@ -35,6 +35,7 @@ public class DBUtil {
         if(connection==null) {
             try {
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/java_practice", "root", "123456");
+                THREAD_LOCAL.set(connection);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -74,9 +75,10 @@ public class DBUtil {
             connection.commit();
         } catch (SQLException e){
             e.printStackTrace();
-        } finally{
-            DBUtil.closeAll(connection,null,null);
         }
+//        finally{
+//            DBUtil.closeAll(connection,null,null);
+//        }
     }
 
     public static void rollback(){
@@ -85,9 +87,10 @@ public class DBUtil {
             connection.rollback();
         } catch (SQLException e){
             e.printStackTrace();
-        } finally{
-            DBUtil.closeAll(connection,null,null);
         }
+//        finally{
+//            DBUtil.closeAll(connection,null,null);
+//        }
     }
 
 
