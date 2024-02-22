@@ -56,10 +56,10 @@ class StudentE {
         return this.sex;
     }
 
-
     public int getAge() {
         return this.age;
     }
+
     public void setAge(int age){
         if(age > 0 && age < 123) {
             this.age = age;

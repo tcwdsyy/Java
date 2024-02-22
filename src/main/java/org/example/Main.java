@@ -1,8 +1,26 @@
 package org.example;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        HashMap<String, String> map = new HashMap<>();
+        map.put("nihao","asdasd");
+        String ex = map.get("asd");
+        System.out.println(ex);
+        Method testMethod;
+        //        1
+        //        LambdaQueryWrapper<CustomerRemarkPo> wrapper = new LambdaQueryWrapper<CustomerRemarkPo>()
+        //                .eq(CustomerRemarkPo::getCustomerAccountId, params.get("qp-customerAccountId-eq"))
+        //                .eq(CustomerRemarkPo::getCustomerAccountType, Short.parseShort((String)params.get("qp-customerAccountType-eq")))
+        //                .nested(i -> i.eq(CustomerRemarkPo::getSourceId, params.get("qp-sourceId-eq")).or().isNull(CustomerRemarkPo::getSourceId));
+        //
+        //        Query<CustomerRemarkPo> query = new Query<>(params);
+        //
+        //        Page<CustomerRemarkPo> page = customerRemarkPoService.page(query.getPage(), wrapper);
+        //
+        //        return new Pager<>(page);
     }
 
 }
