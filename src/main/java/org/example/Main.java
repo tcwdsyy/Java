@@ -1,15 +1,21 @@
 package org.example;
 
 import java.lang.reflect.Method;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("nihao","asdasd");
+        map.put("nihao", "asdasd");
         String ex = map.get("asd");
         System.out.println(ex);
-        Method testMethod;
+
+        int i = 2;
+        int i2 = 3;
+        System.out.println(i / (double) i2);
         //        1
         //        LambdaQueryWrapper<CustomerRemarkPo> wrapper = new LambdaQueryWrapper<CustomerRemarkPo>()
         //                .eq(CustomerRemarkPo::getCustomerAccountId, params.get("qp-customerAccountId-eq"))
@@ -21,6 +27,9 @@ public class Main {
         //        Page<CustomerRemarkPo> page = customerRemarkPoService.page(query.getPage(), wrapper);
         //
         //        return new Pager<>(page);
+//        List<Integer> a = new ArrayList<>();
+//
+//        System.out.println("displaying b: " + b[0]);
     }
 
 }
